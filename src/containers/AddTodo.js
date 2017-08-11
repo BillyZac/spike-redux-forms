@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Kronos from 'react-kronos'
 import moment from 'moment'
 
+import TextInput from '../components/TextInput'
+import DatePicker from '../components/DatePicker'
+import Button from '../components/Button'
 import { addTodo } from '../actions'
 
 class AddTodo extends Component {
@@ -23,20 +25,18 @@ class AddTodo extends Component {
             e.preventDefault()
             dispatch(addTodo(this.state))
           }}>
-          <input
-            onChange={event => {
+          <TextInput
+            onChangeHandler={event => {
               this.setState({ text: event.target.value })
             }}
           />
-          <Kronos
-            date={this.state.dueDate}
-            onChangeDateTime={value => {
+          <DatePicker
+            value={this.state.dueDate}
+            onChangeHandler={value => {
               this.setState({ dueDate: value })
             }}
           />
-          <button type="submit">
-            Add Todo
-          </button>
+          <Button label="Add todo" />
         </form>
       </div>
     )
