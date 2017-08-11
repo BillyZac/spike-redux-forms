@@ -1,36 +1,28 @@
-# Redux Todos Example
+# A spike on using forms with React/Redux
 
-This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app), which provides a simple way to start React projects with no build configuration needed.
+`redux-forms` seemed fun at first but turned into a real wet blanket after a couple of months. This spike demonstrates another way to do `<form>`s within a React/Redux project. See `containers/AddTodo` to get in on the action.
 
-Projects built with Create-React-App include support for ES6 syntax, as well as several unofficial / not-yet-final forms of Javascript syntax such as Class Properties and JSX.  See the list of [language features and polyfills supported by Create-React-App](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#supported-language-features-and-polyfills) for more information.
+This codebase took [the standard React/Redux Todo app](http://redux.js.org/docs/introduction/Examples.html#todos) as its starting point. The original example only allowed users to enter a single property -- a title -- for a Todo. This spike adds start and end dates to the Todo. Does it make sense for a Todo to have start and end dates? Not really. But it's a good way to play around with handling multiple form fields.
 
-## Available Scripts
+The form is validated as the user works. This happens in `containers/AddTodo/formUpdater`. A few cases are handled:
+- A field is validated in isolation from other fields. (E.g. the `text` field can't be left blank.)
+- Two fields are compared. Validation is determined by their relation to one another. (E.g. `startDate` cannot be after `endDate`.)
+- When the user makes a change that violates a validation rule, we can block the change and tell the user why. For instance, rather than allowing the user to set the `startDate` after the `endDate`, the previous `startDate` is preserved. (Alternatively, we could just as easily move the `endDate` forward whenever the user attempts to set the `startDate` after the `endDate`. The possibilities are endless!)
 
-In the project directory, you can run:
+As a side note, `containers/AddTodo/formUpdater` follows the Redux pattern, but it does not use the Redux library itself. You don't really need to know this in order to build a form in this way, but it might be helpful for those already familiar with Redux. You can think of the form component as a tiny Redux app within the larger Redux app. The form's state is not visible to the app itself. (This differs from the approach taken by `redux-forms`.) The form only exposes what the app needs to know, leaving the global app state unmuddied by the state of the form fields, which are transitory and of no interest to components outside of the form.
 
-### `npm start`
+This redux pattern adds some indirection, but the flow is explicit (another thing hard to get from `redux-forms`). The update and validation logic is isolated and exposed, making it easy to customize the response to validation failures.
+
+Easy customization facilitates quick UX experiments makes for better UX in the end. (imho)
+
+## Usage
+
+```
+npm start
+```
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
