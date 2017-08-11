@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-const Todo = ({ onClick, completed, text, dueDate }) => (
+const Todo = ({ onClick, completed, text, startDate, endDate }) => (
   <li
     onClick={onClick}
     style={{
@@ -8,8 +8,10 @@ const Todo = ({ onClick, completed, text, dueDate }) => (
     }}
   >
     <span>{text}</span>
-    <span> ----> </span>
-    <span>{dueDate.format('MMM DD')}</span>
+    <span> ⚡ </span>
+    <span>Start: {startDate.format('MMM DD')}</span>
+    <span> ⚡ </span>
+    <span>End: {endDate.format('MMM DD')}</span>
   </li>
 )
 

@@ -1,7 +1,10 @@
 import React, { PropTypes } from 'react'
 
-const Button = ({ label }) => (
-  <button type="submit">
+const Button = ({ label, disabled }) => (
+  <button
+    type="submit"
+    disabled={disabled}
+  >
     { label }
   </button>
 )
