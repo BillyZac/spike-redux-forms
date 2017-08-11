@@ -6,11 +6,11 @@ const formUpdater = (state, action) => {
 
   switch (action.type) {
     case 'update_text_input':
-      if (action.value === '') {
+      if (action.payload === '') {
         message = '😟 You need a title'
         isFormValid = false
       }
-      return Object.assign(state, { text: action.value, message, isFormValid })
+      return Object.assign(state, { text: action.payload, message, isFormValid })
 
     case 'update_start_date':
       const startDate = action.payload

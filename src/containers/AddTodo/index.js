@@ -38,7 +38,7 @@ class AddTodo extends Component {
             onChangeHandler={event => {
               this.updateForm({
                 type: 'update_text_input',
-                value: event.target.value
+                payload: event.target.value
               })
             }}
           />
@@ -66,7 +66,7 @@ class AddTodo extends Component {
           />
         </form>
         <p>{ this.state.message }</p>
-        <p><hr /></p>
+        <hr />
       </div>
     )
   }
