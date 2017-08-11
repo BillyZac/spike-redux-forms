@@ -9,6 +9,7 @@ class AddTodo extends Component {
   constructor() {
     super()
     this.state = {
+      text: '',
       dueDate: moment()
     }
   }
@@ -22,6 +23,11 @@ class AddTodo extends Component {
             e.preventDefault()
             dispatch(addTodo(this.state))
           }}>
+          <input
+            onChange={event => {
+              this.setState({ text: event.target.value })
+            }}
+          />
           <Kronos
             date={this.state.dueDate}
             onChangeDateTime={value => {
