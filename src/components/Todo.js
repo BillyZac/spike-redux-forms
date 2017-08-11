@@ -7,7 +7,7 @@ const Todo = ({ onClick, completed, text, dueDate }) => (
       textDecoration: completed ? 'line-through' : 'none'
     }}
   >
-    <span>{text}</span>{text}
+    <span>{text}</span>
     <span> ----> </span>
     <span>{dueDate.format('MMM DD')}</span>
   </li>

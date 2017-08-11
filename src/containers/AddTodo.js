@@ -17,13 +17,13 @@ class AddTodo extends Component {
   }
 
   render() {
-    const { dispatch } = this.props
+    const { submitForm } = this.props
 
     return (
       <div>
         <form onSubmit={e => {
             e.preventDefault()
-            dispatch(addTodo(this.state))
+            submitForm(this.state)
           }}>
           <TextInput
             onChangeHandler={event => {
@@ -43,6 +43,12 @@ class AddTodo extends Component {
   }
 }
 
-AddTodo = connect()(AddTodo)
+const mapDispatchToProps = (dispatch => ({
+  submitForm: formData => {
+    dispatch(addTodo(formData))
+  }
+}))
+
+AddTodo = connect(null, mapDispatchToProps)(AddTodo)
 
 export default AddTodo
