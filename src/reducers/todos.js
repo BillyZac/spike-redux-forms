@@ -4,6 +4,7 @@ const todo = (state, action) => {
       return {
         id: action.id,
         text: action.text,
+        dueDate: action.dueDate,
         completed: false
       }
     case 'TOGGLE_TODO':
@@ -21,6 +22,7 @@ const todo = (state, action) => {
 }
 
 const todos = (state = [], action) => {
+  console.log(action)
   switch (action.type) {
     case 'ADD_TODO':
       return [
