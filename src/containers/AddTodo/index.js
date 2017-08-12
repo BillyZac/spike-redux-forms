@@ -33,6 +33,7 @@ class AddTodo extends Component {
         <form onSubmit={e => {
             e.preventDefault()
             submitForm(this.state)
+            this.updateForm({ type: 'clear_form' })
           }}>
           <TextInput
             value={this.state.text}

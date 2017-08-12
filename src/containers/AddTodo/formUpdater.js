@@ -3,6 +3,7 @@
 const formUpdater = (state, action) => {
   let message = '' // clear message on every update
   let isFormValid = true
+  console.log(action)
 
   switch (action.type) {
     case 'update_text_input':
@@ -31,6 +32,9 @@ const formUpdater = (state, action) => {
          })
       }
       return Object.assign(state, { endDate: action.payload, message })
+
+    case 'clear_form':
+      return Object.assign(state, { text: '' })
 
     default:
       return state
