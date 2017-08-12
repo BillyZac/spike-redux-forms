@@ -35,6 +35,7 @@ class AddTodo extends Component {
             submitForm(this.state)
           }}>
           <TextInput
+            value={this.state.text}
             onChangeHandler={event => {
               this.updateForm({
                 type: 'update_text_input',
