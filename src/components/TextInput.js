@@ -1,14 +1,15 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const TextInput = ({ value, onChangeHandler }) => (
+const TextInput = ({ value, onChange }) => (
   <input
     value={value}
-    onChange={onChangeHandler}
+    onChange={onChange}
   />
 )
 
 TextInput.propTypes = {
-  onChangeHandler: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired
 }
 

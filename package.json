@@ -9,11 +9,13 @@
   },
   "dependencies": {
     "moment": "^2.18.1",
+    "prop-types": "^15.5.10",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-kronos": "^1.6.0",
     "react-redux": "^4.4.5",
-    "redux": "^3.5.2"
+    "redux": "^3.5.2",
+    "redux-form": "^7.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
