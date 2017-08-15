@@ -4,40 +4,9 @@ import moment from 'moment'
 import { connect } from 'react-redux'
 import { addTodo } from '../../actions'
 import TextInput from '../../components/TextInput'
-import DatePicker from '../../components/DatePicker'
 import DateTimePicker from '../../components/DateTimePicker'
 import DropDownPicker from '../../components/DropDownPicker'
-
-// Validation functions
-// Field level validators
-const required = value => (value ? undefined : 'Required')
-
-// Form level validator
-const formLevelValidator = allValues => {
-  const errors = {}
-  if (allValues.task === 'dawg') {
-    errors.task = 'No dawgs allowed'
-  }
-  if (allValues.startDate.isAfter(allValues.endDate)) {
-    errors.dates = 'Start date must be before end date'
-  }
-  return errors
-}
-
-const renderTextInput = field => (
-  <TextInput
-    value={field.input.value}
-    onChange={value => field.input.onChange(value)}
-    label={field.label}
-  />
-)
-
-const renderDatePicker = field => (
-  <DatePicker
-    value={field.input.value}
-    onChangeHandler={value => field.input.onChange(value)}
-  />
-)
+import { required, formLevelValidator } from './validators'
 
 const AddTodo = (props) => {
   const { handleAddTodo, handleSubmit, errors, pristine, locations } = props
@@ -47,7 +16,7 @@ const AddTodo = (props) => {
         <Field
           name="task"
           label="Task"
-          component={renderTextInput}
+          component={TextInput}
           validate={required}
         />
         <Field
@@ -78,7 +47,7 @@ const mapStateToProps = state => {
   return {
     errors: getFormSyncErrors('add-todo')(state),
     initialValues: {
-      task: 'onesy', // In the real world this would come from Redux state.
+      task: 'Kill it, killa.', // In the real world this would come from Redux state.
       startDate: moment().add(1, 'day'),
       endDate: moment().add(1, 'week'),
       location: 'Louisville'

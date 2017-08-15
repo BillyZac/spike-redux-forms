@@ -1,24 +1,21 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-const TextInput = ({ value, onChange, label = '' }) => (
-  <div style={{
-    display: 'flex',
-    flexDirection: 'column',
-    width: '300px',
-    marginBottom: '20px'
-  }}>
-    <label>{ label }</label>
-    <input
-      value={value}
-      onChange={onChange}
-    />
-  </div>
-)
-
-TextInput.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired
+const TextInput = field => {
+  const { value, onChange, label = '' } = field
+  return (
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      width: '300px',
+      marginBottom: '20px'
+    }}>
+      <label>{ label }</label>
+      <input
+        value={field.input.value}
+        onChange={value => field.input.onChange(value)}
+      />
+    </div>
+  )
 }
 
 export default TextInput
