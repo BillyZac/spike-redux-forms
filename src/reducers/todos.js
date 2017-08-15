@@ -1,9 +1,11 @@
 const todo = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
+    console.log('====', action)
       return {
         id: action.id,
-        text: action.text,
+        task: action.task,
+        location: action.location,
         startDate: action.startDate,
         endDate: action.endDate,
         completed: false

@@ -1,8 +1,9 @@
 let nextTodoId = 0
-export const addTodo = ({text, startDate, endDate}) => ({
+export const addTodo = ({task, location, startDate, endDate}) => ({
   type: 'ADD_TODO',
   id: nextTodoId++,
-  text,
+  task,
+  location,
   startDate,
   endDate
 })
