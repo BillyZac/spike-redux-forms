@@ -1,6 +1,10 @@
 # A spike on using forms with React/Redux
 
-`redux-forms` seemed fun at first but turned into a real wet blanket after a couple of months. This spike demonstrates another way to do `<form>`s within a React/Redux project. See `containers/AddTodo` to get in on the action.
+See [the redux-form branch](https://github.com/BillyZac/spike-redux-forms/tree/redux-form) for the same spike, done using the `redux-form` library.
+
+## Notes on the master branch version of the spike
+
+`redux-form` seemed fun at first but turned into a real wet blanket after a couple of months. This spike demonstrates another way to do `<form>`s within a React/Redux project. See `containers/AddTodo` to get in on the action.
 
 This codebase took [the standard React/Redux Todo app](http://redux.js.org/docs/introduction/Examples.html#todos) as its starting point. The original example only allowed users to enter a single property -- a title -- for a Todo. This spike adds start and end dates to the Todo. Does it make sense for a Todo to have start and end dates? Not really. But it's a good way to play around with handling multiple form fields.
 
