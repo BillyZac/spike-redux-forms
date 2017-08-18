@@ -1,7 +1,8 @@
 import React from 'react'
 
 const TextInput = field => {
-  const { value, onChange, label = '' } = field
+  const { label } = field
+  const { value, onChange } = field.input
   return (
     <div style={{
       display: 'flex',
@@ -11,8 +12,8 @@ const TextInput = field => {
     }}>
       <label>{ label }</label>
       <input
-        value={field.input.value}
-        onChange={value => field.input.onChange(value)}
+        value={value}
+        onChange={value => onChange(value)}
       />
     </div>
   )
